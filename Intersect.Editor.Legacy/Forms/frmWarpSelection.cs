@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection;
@@ -128,7 +128,7 @@ namespace Intersect.Editor.Forms
                 }
 
                 var newBitmap = new Bitmap(pnlMap.Width, pnlMap.Height);
-                var g = Graphics.FromImage(newBitmap);
+                var g = System.Drawing.Graphics.FromImage(newBitmap);
                 g.DrawImage(
                     mMapImage, new Rectangle(0, 0, pnlMap.Width, pnlMap.Height),
                     new Rectangle(0, 0, pnlMap.Width, pnlMap.Height), GraphicsUnit.Pixel

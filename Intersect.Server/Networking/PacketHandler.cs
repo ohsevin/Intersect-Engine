@@ -24,6 +24,7 @@ using Intersect.Server.Localization;
 using Intersect.Server.Maps;
 using Intersect.Server.Networking.Lidgren;
 using Intersect.Server.Notifications;
+using Intersect.Time;
 using Intersect.Utilities;
 
 using System;
@@ -3913,7 +3914,7 @@ namespace Intersect.Server.Networking
 
             TimeBase.GetTimeBase().LoadFromJson(packet.TimeJson);
             DbInterface.SaveTime();
-            Time.Init();
+            General.Time.Init();
             PacketSender.SendTimeBaseToAllEditors();
         }
 

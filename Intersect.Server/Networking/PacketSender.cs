@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+
 using Intersect.Enums;
 using Intersect.GameObjects;
 using Intersect.GameObjects.Crafting;
@@ -22,7 +23,8 @@ using Intersect.Server.Entities.Events;
 using Intersect.Server.General;
 using Intersect.Server.Localization;
 using Intersect.Server.Maps;
-using Intersect.Utilities;
+using Intersect.Time;
+
 using Newtonsoft.Json;
 
 namespace Intersect.Server.Networking
@@ -409,7 +411,7 @@ namespace Intersect.Server.Networking
             {
                 var entitiesToDispose = oldMapInstance.GetEntities(true);
                 var effectedMaps = oldMapInstance.GetController().GetSurroundingMapIds(true);
-                
+
                 var enPackets = new List<EntityPacket>();
                 for (var i = 0; i < entitiesToDispose.Count; i++)
                 {
@@ -1035,7 +1037,7 @@ namespace Intersect.Server.Networking
                     {
                         items.Add(new MapItemUpdatePacket(mapId, item.TileIndex, item.UniqueId, item.ItemId, item.BagId, item.Quantity, item.StatBuffs));
                     }
-                }   
+                }
             }
             return new MapItemsPacket(mapId, items.ToArray());
         }
@@ -1089,7 +1091,7 @@ namespace Intersect.Server.Networking
                         SendDataToProximityOnMapInstance(mapId, mapInstanceId, new MapItemUpdatePacket(mapId, itemRef.TileIndex, itemRef.UniqueId));
                     }
                 }
-                
+
             }
             else
             {
@@ -1810,8 +1812,8 @@ namespace Intersect.Server.Networking
         {
             SendDataToAllPlayers(
                 new TimePacket(
-                    Time.GetTime(), TimeBase.GetTimeBase().SyncTime ? 1 : TimeBase.GetTimeBase().Rate,
-                    Time.GetTimeColor()
+                    General.Time.GetTime(), TimeBase.GetTimeBase().SyncTime ? 1 : TimeBase.GetTimeBase().Rate,
+                    General.Time.GetTimeColor()
                 )
             );
         }
@@ -1821,8 +1823,8 @@ namespace Intersect.Server.Networking
         {
             client?.Send(
                 new TimePacket(
-                    Time.GetTime(), TimeBase.GetTimeBase().SyncTime ? 1 : TimeBase.GetTimeBase().Rate,
-                    Time.GetTimeColor()
+                    General.Time.GetTime(), TimeBase.GetTimeBase().SyncTime ? 1 : TimeBase.GetTimeBase().Rate,
+                    General.Time.GetTimeColor()
                 )
             );
         }
@@ -2115,7 +2117,7 @@ namespace Intersect.Server.Networking
             {
                 return false;
             }
-            
+
             SendDataToAllLayersOfMap(mapId, packet, except, mode);
 
             foreach (var surrMap in map.SurroundingMapIds)
