@@ -195,6 +195,7 @@ namespace Intersect.Editor.Forms.Editors
             lblAnim.Text = Strings.ItemEditor.animation;
             chkCanDrop.Text = Strings.ItemEditor.CanDrop;
             lblDeathDropChance.Text = Strings.ItemEditor.DeathDropChance;
+            lblDespawnTime.Text = Strings.ItemEditor.DespawnTime;
             chkCanBank.Text = Strings.ItemEditor.CanBank;
             chkCanGuildBank.Text = Strings.ItemEditor.CanGuildBank;
             chkCanBag.Text = Strings.ItemEditor.CanBag;
@@ -367,6 +368,7 @@ namespace Intersect.Editor.Forms.Editors
                 nudInvStackLimit.Value = mEditorItem.MaxInventoryStack;
                 nudBankStackLimit.Value = mEditorItem.MaxBankStack;
                 nudDeathDropChance.Value = mEditorItem.DropChanceOnDeath;
+                nudItemDespawnTime.Value = mEditorItem.DespawnTime;
                 cmbToolType.SelectedIndex = mEditorItem.Tool + 1;
                 cmbAttackAnimation.SelectedIndex = AnimationBase.ListIndex(mEditorItem.AttackAnimationId) + 1;
                 nudBlockChance.Value = mEditorItem.BlockChance;
@@ -1058,6 +1060,11 @@ namespace Intersect.Editor.Forms.Editors
         private void nudBlockDmgAbs_ValueChanged(object sender, EventArgs e)
         {
             mEditorItem.BlockAbsorption = (int)nudBlockDmgAbs.Value;
+        }
+
+        private void nudItemDespawnTime_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.DespawnTime = (long)nudItemDespawnTime.Value;
         }
 
         /// <summary>

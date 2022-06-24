@@ -3225,6 +3225,9 @@ Tick timer saved in server config.json.";
             public static LocalizedString DeathDropChance = @"Drop chance on Death (%):";
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public static LocalizedString DespawnTime = @"Item Despawn Time (ms):     [0 for server default]";
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public static LocalizedString CanBag = @"Can Bag?";
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
