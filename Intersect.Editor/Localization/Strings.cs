@@ -748,6 +748,8 @@ namespace Intersect.Editor.Localization
 
             public static LocalizedString quantity = @"Quantity:";
 
+            public static LocalizedString respawntime = @"Respawn Time (ms):      [0 for server default]";
+
             public static LocalizedString resource = @"Resource:";
 
             public static LocalizedString resourcespawn = @"Resource";

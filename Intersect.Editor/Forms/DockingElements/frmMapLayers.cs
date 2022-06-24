@@ -471,6 +471,7 @@ namespace Intersect.Editor.Forms.DockingElements
             {
                 cmbItemAttribute.SelectedIndex = 0;
             }
+            nudItemRespawnTime.Value = 0;
         }
 
         private void rbBlocked_CheckedChanged(object sender, EventArgs e)
@@ -698,6 +699,7 @@ namespace Intersect.Editor.Forms.DockingElements
                     var itemAttribute = attribute as MapItemAttribute;
                     itemAttribute.ItemId = ItemBase.IdFromList(cmbItemAttribute.SelectedIndex);
                     itemAttribute.Quantity = (int)nudItemQuantity.Value;
+                    itemAttribute.RespawnTime = (long)nudItemRespawnTime.Value;
                     break;
 
                 case MapAttributes.ZDimension:
@@ -1076,6 +1078,7 @@ namespace Intersect.Editor.Forms.DockingElements
             grpItem.Text = Strings.Attributes.itemspawn;
             lblMapItem.Text = Strings.Attributes.item;
             lblMaxItemAmount.Text = Strings.Attributes.quantity;
+            lblItemRespawnTime.Text = Strings.Attributes.respawntime;
 
             //Z-Dimension
             grpZDimension.Text = Strings.Attributes.zdimension;
@@ -1353,6 +1356,11 @@ namespace Intersect.Editor.Forms.DockingElements
         private void NudItemQuantity_ValueChanged(object sender, System.EventArgs e)
         {
             nudItemQuantity.Value = Math.Max(1, nudItemQuantity.Value);
+        }
+
+        private void NudItemRespawnTime_ValueChanged(object sender, System.EventArgs e)
+        {
+            nudItemRespawnTime.Value = Math.Max(0, nudItemRespawnTime.Value);
         }
 
         private void cmbMapLayer_SelectedIndexChanged(object sender, EventArgs e)
